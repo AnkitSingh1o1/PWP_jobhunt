@@ -2,9 +2,9 @@ name: daily job digest
 
 on:
   schedule:
-    # 23:00 IST (11:00 PM) every day. IST is UTC+5:30, so 23:00 IST == 17:30 UTC.
+    # 10:00 AM IST every day. IST is UTC+5:30, so 10:00 IST == 04:30 UTC.
     # GitHub's scheduler is best-effort and can lag by several minutes under load.
-    - cron: "30 17 * * *"
+    - cron: "30 4 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
