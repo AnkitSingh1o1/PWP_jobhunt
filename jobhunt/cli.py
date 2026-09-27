@@ -124,6 +124,11 @@ def cmd_run(args) -> int:
         subject, doc = digest_mod.build([], scanned, 0, store.stats())
         path = digest_mod.write(doc, cfg.get("digest_file", "out/digest.html"))
         print(f"\nnothing new today. preview: {path}")
+        if args.send:
+            try:
+                mailer.send(subject, doc)
+            except Exception as e:
+                print(f"  ! email failed ({type(e).__name__}: {e}) — digest still on disk")
         return 0
 
     # ---- 3. screen
